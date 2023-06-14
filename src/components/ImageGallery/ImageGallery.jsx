@@ -1,9 +1,9 @@
 import React from 'react';
-import { ImageGalleryItem } from 'components/ImageGalleryItem/imageGallryItem';
+import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
 import PropTypes from 'prop-types';
-import { Gallery } from './ImageGallary/ImageGallary.styled.jsx';
+import { Gallery } from './ImageGallery.styled.jsx';
 
-export const ImageGallary = ({ images }) => {
+export const ImageGallery = ({ images }) => {
     return (
         <Gallery>
             {images.map(({ id, webformatURL, largeImageURL, tags }) => {
@@ -22,7 +22,7 @@ export const ImageGallary = ({ images }) => {
 
 };
 
-ImageGallary.propTypes = {
+ImageGallery.propTypes = {
     images: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.number.isRequired,

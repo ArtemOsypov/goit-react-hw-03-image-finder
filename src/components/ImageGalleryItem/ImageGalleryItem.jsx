@@ -1,9 +1,9 @@
-import React, {Components} from 'react';
+import React from 'react';
 import { Modal } from 'components/Modal/Modal';
 import PropTypes from 'prop-types';
 import { GalleryItem, Image } from './ImageGalleryItem.styled';
 
-export class ImageGallaryItem extends Components {
+export class ImageGalleryItem extends React.Component {
     state = { isModalOpen: false };
 
     toggleModal = () => {
@@ -39,7 +39,7 @@ export class ImageGallaryItem extends Components {
 }
   
 
-ImageGallaryItem.PropTypes = {
+ImageGalleryItem.propTypes = {
     webformatURL: PropTypes.string.isRequired,
     tags: PropTypes.string.isRequired,
     largeImageURL: PropTypes.string.isRequired,
