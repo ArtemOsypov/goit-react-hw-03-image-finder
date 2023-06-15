@@ -6,25 +6,25 @@ import { Overlay, ModalViewer, ModalImg } from './Modal.styled';
 const modalRoot = document.querySelector('#modal-root');
 
 export class Modal extends React.Component {
-    componentDidMounet() {
-        window.addEventListener('keydown', this.closeByEsc);
-    };
+  componentDidMount() {
+    window.addEventListener('keydown', this.closeByEsc);
+  }
 
-    componentsWillUnmount() {
-        window.removeEventListener('keydown', this.closeByEsc);
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.closeByEsc);
+  }
+
+  closeByEsc = e => {
+    if (e.code !== 'Escape') {
+      return;
     }
+    this.props.closeModal();
+  };
 
-    cloesByEsc = e => {
-        if (e.code !== 'Escape') {
-        return;
-        }
-    this.props.closeModal(); 
-    }
-    
-
-    render() {
+  render() {
     const { closeModal, tags, modalImg } = this.props;
-return createPortal(
+
+    return createPortal(
       <Overlay onClick={closeModal}>
         <ModalViewer>
           <ModalImg src={modalImg} alt={tags} />
@@ -33,13 +33,10 @@ return createPortal(
       modalRoot
     );
   }
-
-
-};
+}
 
 Modal.propTypes = {
   modalImg: PropTypes.string.isRequired,
   closeModal: PropTypes.func.isRequired,
   tags: PropTypes.string.isRequired,
 };
-

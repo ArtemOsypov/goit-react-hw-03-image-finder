@@ -1,7 +1,7 @@
 import React from 'react';
 import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
 import PropTypes from 'prop-types';
-import { Gallery } from './ImageGallery.styled.jsx';
+import { Gallery } from './ImageGallery.styled';
 
 export const ImageGallery = ({ images }) => {
     return (
@@ -14,20 +14,23 @@ export const ImageGallery = ({ images }) => {
                         largeImageURL={largeImageURL}
                         tags={tags}
                     />
+                    
                 );
             })}
+            
 
         </Gallery>
     );
 
 };
+console.log('ImageGalleryItem ', ImageGalleryItem );
 
 ImageGallery.propTypes = {
     images: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.number.isRequired,
             webformatURL: PropTypes.string.isRequired,
-            ladgeImageURL: PropTypes.string.isRequired,
+            largeImageURL: PropTypes.string.isRequired,
             tags: PropTypes.string.isRequired,
         })
     ),
