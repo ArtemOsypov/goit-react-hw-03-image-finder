@@ -34,7 +34,7 @@ export class App extends React.Component {
         }
 
         this.setState(prevState => ({
-          images: page === 1 ? hits : [...prevState.images, ...hits],
+          images: [...prevState.images, ...hits],
 
           totalHits:
             page === 1

@@ -6,6 +6,13 @@ import { Overlay, ModalViewer, ModalImg } from './Modal.styled';
 const modalRoot = document.querySelector('#modal-root');
 
 export class Modal extends React.Component {
+
+  handleBackdropClick = e => {
+    if (e.currentTarget === e.target) {
+      this.props.closeModal();
+    }
+  };
+  
   componentDidMount() {
     window.addEventListener('keydown', this.closeByEsc);
   }
@@ -13,6 +20,7 @@ export class Modal extends React.Component {
   componentWillUnmount() {
     window.removeEventListener('keydown', this.closeByEsc);
   }
+  
 
   closeByEsc = e => {
     if (e.code !== 'Escape') {
@@ -21,22 +29,26 @@ export class Modal extends React.Component {
     this.props.closeModal();
   };
 
-  render() {
-    const { closeModal, tags, modalImg } = this.props;
+  
 
-    return createPortal(
-      <Overlay onClick={closeModal}>
-        <ModalViewer>
-          <ModalImg src={modalImg} alt={tags} />
-        </ModalViewer>
-      </Overlay>,
-      modalRoot
-    );
+    render()  {
+      const { tags, modalImg } = this.props;
+
+      return createPortal(
+        <Overlay onClick={this.handleBackdropClick}>
+          <ModalViewer>
+            <ModalImg src={modalImg} alt={tags} />
+          </ModalViewer>
+        </Overlay>,
+        modalRoot
+      );
+    }
   }
-}
+
 
 Modal.propTypes = {
   modalImg: PropTypes.string.isRequired,
   closeModal: PropTypes.func.isRequired,
   tags: PropTypes.string.isRequired,
-};
+  // handleBackdropClick: PropTypes.func.isRequired,
+}

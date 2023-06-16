@@ -17,16 +17,18 @@ export class ImageGalleryItem extends React.Component {
         const { isModalOpen } = this.state;
         const { toggleModal } = this;
 
-        return (
-       <GalleryItem className="gallery-item">
-        <Image
-          src={webformatURL}
-          alt={tags}
-          width="500"
-          height="210"
-          loading="lazy"
-          onClick={toggleModal}
-        />
+      return (
+      <>
+        <GalleryItem className="gallery-item">
+          <Image
+            src={webformatURL}
+            alt={tags}
+            width="500"
+            height="210"
+            loading="lazy"
+            onClick={toggleModal}
+          />
+        </GalleryItem>
 
         {isModalOpen && (
           <Modal
@@ -35,7 +37,10 @@ export class ImageGalleryItem extends React.Component {
             closeModal={toggleModal}
           />
         )}
-      </GalleryItem>
+      
+          
+      </>
+      
     );
   }
 }
